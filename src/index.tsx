@@ -6,26 +6,22 @@ import Main from './components/Main';
 import Menu from './components/Menu';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Categories from './components/Categories';
-
-
-function App () {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Main/>} />
-        <Route path="/categories" element={<Categories/>} />
-      </Routes>
-    </Router>
-  );
-};
+import Container from './components/Container';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
-    <Menu/>
+    <Router>
+      <Menu/>
+      <Container>
+        <Routes>
+          <Route path="/" element={<Main/>} />
+          <Route path="/categories" element={<Categories/>} />
+        </Routes>
+      </Container>
+    </Router>
   </React.StrictMode>
 );
 reportWebVitals();
