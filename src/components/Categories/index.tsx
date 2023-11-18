@@ -3,6 +3,8 @@ import ApiCategories from '../../api/categories';
 import { ResponsePage } from "../../interfaces/response";
 import { Category } from "../../interfaces/category";
 import { Table } from "react-bootstrap";
+import TableHeader from "../../common/Table/TableHeader";
+import TableCell from "../../common/Table/TableCell";
 
 const Categories = () => {
     const [categories, setCategories] = useState<ResponsePage<Category>>(
@@ -19,19 +21,24 @@ const Categories = () => {
         <>
             <h2>Categories</h2>
             <Table>
-                <thead>
+                <TableHeader>
                     <tr>
                         <th>UUID</th>
                         <th>Name</th>
                         <th>Color</th>
                     </tr>
-                </thead>
+                </TableHeader>
                 <tbody>
                     {categories && categories.results?.map((category) => (
                         <tr>
-                            <td>{category.uuid}</td>
-                            <td>{category.name}</td>
-                            <td>{category.color}</td>
+                            <TableCell>{category.uuid}</TableCell>
+                            <TableCell>{category.name}</TableCell>
+                            <TableCell>
+                                <input
+                                    type="color"
+                                    value={category.color}
+                                />
+                            </TableCell>
                         </tr>
                     ))}
                 </tbody>
